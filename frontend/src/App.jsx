@@ -4,11 +4,17 @@ import Sidebar from './components/Sidebar';
 import ModernTemplate from './templates/ModernTemplate';
 import ClassicTemplate from './templates/ClassicTemplate';
 import CreativeTemplate from './templates/CreativeTemplate';
+import ElegantTemplate from './templates/ElegantTemplate';
+import GeometricTemplate from './templates/GeometricTemplate';
+import CurvedTemplate from './templates/CurvedTemplate';
 
 const templates = [
   { id: 'modern', name: 'Modern Profile', description: 'Clean, bold, and professional. Great for digital agencies.' },
   { id: 'classic', name: 'Classic Corporate', description: 'Traditional and structured. Ideal for consulting and B2B.' },
   { id: 'creative', name: 'Creative Agency', description: 'Stylish sidebed layout for freelancers and creatives.' },
+  { id: 'elegant', name: 'Elegant Green', description: 'Sophisticated design with a strong accent sidebar.' },
+  { id: 'geometric', name: 'Geometric Blue', description: 'Abstract, modern aesthetic with geometric shapes.' },
+  { id: 'curved', name: 'Curved Red', description: 'Dynamic layout with curved headers and footers.' },
 ];
 
 const App = () => {
@@ -69,6 +75,12 @@ const App = () => {
         return <ClassicTemplate {...props} />;
       case 'creative':
         return <CreativeTemplate {...props} />;
+      case 'elegant':
+        return <ElegantTemplate {...props} />;
+      case 'geometric':
+        return <GeometricTemplate {...props} />;
+      case 'curved':
+        return <CurvedTemplate {...props} />;
       case 'modern':
       default:
         return <ModernTemplate {...props} />;
