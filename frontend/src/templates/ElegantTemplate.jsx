@@ -46,8 +46,14 @@ const ElegantTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditing 
                 </div>
 
                 <div className="relative z-10 mt-12">
-                    <h3 className="text-sm font-bold uppercase tracking-wider mb-2">Terms & Conditions</h3>
-                    <p className="text-xs text-white/80 whitespace-pre-wrap leading-relaxed">{data.notes || 'Payment is due within 30 days. Thank you for your business.'}</p>
+                    {data.paymentInstructions && (
+                        <div className="mb-6">
+                            <h3 className="text-sm font-bold uppercase tracking-wider mb-2 text-white/90">Payment Instructions</h3>
+                            <p className="text-xs text-white/80 whitespace-pre-wrap leading-relaxed">{data.paymentInstructions}</p>
+                        </div>
+                    )}
+                    <h3 className="text-sm font-bold uppercase tracking-wider mb-2 text-white/90">Terms & Conditions</h3>
+                    <p className="text-xs text-white/80 whitespace-pre-wrap leading-relaxed">{data.notes}</p>
                 </div>
             </div>
 
@@ -73,12 +79,12 @@ const ElegantTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditing 
                                 </tr>
                                 <tr>
                                     <td className="py-2 pr-4 font-bold text-slate-500 uppercase tracking-wider">Date:</td>
-                                    <td className="font-semibold text-slate-800">{new Date(data.dateIssued).toLocaleDateString()}</td>
+                                    <td className="font-semibold text-slate-800">{data.dateIssued}</td>
                                 </tr>
                                 {data.dueDate && (
                                     <tr>
                                         <td className="py-2 pr-4 font-bold text-slate-500 uppercase tracking-wider">Due Date:</td>
-                                        <td className="font-semibold text-slate-800">{new Date(data.dueDate).toLocaleDateString()}</td>
+                                        <td className="font-semibold text-slate-800">{data.dueDate}</td>
                                     </tr>
                                 )}
                             </tbody>

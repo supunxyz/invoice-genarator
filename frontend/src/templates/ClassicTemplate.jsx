@@ -53,12 +53,12 @@ const ClassicTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditing 
                             </tr>
                             <tr>
                                 <td className="pr-4 py-1 text-gray-500 font-bold uppercase text-xs tracking-wider">Date</td>
-                                <td className="text-gray-800 font-medium">{new Date(data.dateIssued).toLocaleDateString()}</td>
+                                <td className="text-gray-800 font-medium">{data.dateIssued}</td>
                             </tr>
                             {data.dueDate && (
                                 <tr>
                                     <td className="pr-4 py-1 text-gray-500 font-bold uppercase text-xs tracking-wider">Due</td>
-                                    <td className="text-gray-800 font-medium">{new Date(data.dueDate).toLocaleDateString()}</td>
+                                    <td className="text-gray-800 font-medium">{data.dueDate}</td>
                                 </tr>
                             )}
                         </tbody>
@@ -117,8 +117,18 @@ const ClassicTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditing 
             <div className="mt-auto pt-8 border-t border-gray-200 page-break-inside-avoid">
                 <div className="flex justify-between items-end">
                     <div className="w-1/2">
-                        <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Notes</p>
-                        <p className="text-sm text-gray-600 italic whitespace-pre-wrap">{data.notes || 'Thank you for your business.'}</p>
+                        {data.paymentInstructions && (
+                            <div className="mb-4">
+                                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">Payment Instructions</p>
+                                <p className="text-sm text-gray-600 whitespace-pre-wrap">{data.paymentInstructions}</p>
+                            </div>
+                        )}
+                        {data.notes && (
+                            <div>
+                                <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-1">Notes</p>
+                                <p className="text-sm text-gray-600 italic whitespace-pre-wrap">{data.notes}</p>
+                            </div>
+                        )}
                     </div>
                     <div className="w-64 text-center">
                         <div className="border-b border-gray-400 h-10 w-full mb-2"></div>

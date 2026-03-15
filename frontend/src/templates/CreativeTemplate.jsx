@@ -67,12 +67,12 @@ const CreativeTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditing
                         </div>
                         <div className="flex gap-4 justify-end">
                             <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Date:</span>
-                            <span className="text-sm font-bold text-slate-800">{new Date(data.dateIssued).toLocaleDateString()}</span>
+                            <span className="text-sm font-bold text-slate-800">{data.dateIssued}</span>
                         </div>
                         {data.dueDate && (
                             <div className="flex gap-4 justify-end mt-1">
                                 <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Due:</span>
-                                <span className="text-sm font-bold text-slate-800">{new Date(data.dueDate).toLocaleDateString()}</span>
+                                <span className="text-sm font-bold text-slate-800">{data.dueDate}</span>
                             </div>
                         )}
                     </div>
@@ -134,11 +134,19 @@ const CreativeTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditing
                     </div>
                 </div>
 
-                <div className="mt-auto pt-8 border-t border-slate-100 page-break-inside-avoid flex justify-between items-end">
-                    <p className="text-sm text-slate-500 font-medium whitespace-pre-wrap italic w-2/3 pr-4">{data.notes}</p>
-                    <div className="w-1/3 text-center">
-                        <div className="border-b-2 h-10 w-full mb-1" style={{ borderColor: data.themeColor }}></div>
-                        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Authorized Signature</p>
+                <div className="mt-auto pt-8 border-t border-slate-100 page-break-inside-avoid flex flex-col justify-end">
+                    {data.paymentInstructions && (
+                        <div className="mb-6">
+                            <h4 className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-2">Payment Instructions</h4>
+                            <p className="text-sm text-slate-700 whitespace-pre-wrap">{data.paymentInstructions}</p>
+                        </div>
+                    )}
+                    <div className="flex justify-between items-end">
+                        <p className="text-sm text-slate-500 font-medium whitespace-pre-wrap italic w-2/3 pr-4">{data.notes}</p>
+                        <div className="w-1/3 text-center">
+                            <div className="border-b-2 h-10 w-full mb-1" style={{ borderColor: data.themeColor }}></div>
+                            <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Authorized Signature</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -70,12 +70,12 @@ const CurvedTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditing }
                             </tr>
                             <tr>
                                 <td className="py-1.5 font-bold text-slate-500 uppercase tracking-wider">Issue Date:</td>
-                                <td className="font-semibold text-slate-800 pl-4">{new Date(data.dateIssued).toLocaleDateString()}</td>
+                                <td className="font-semibold text-slate-800 pl-4">{data.dateIssued}</td>
                             </tr>
                             {data.dueDate && (
                                 <tr>
                                     <td className="py-1.5 font-bold text-slate-500 uppercase tracking-wider">Due Date:</td>
-                                    <td className="font-semibold text-slate-800 pl-4">{new Date(data.dueDate).toLocaleDateString()}</td>
+                                    <td className="font-semibold text-slate-800 pl-4">{data.dueDate}</td>
                                 </tr>
                             )}
                         </tbody>
@@ -111,8 +111,14 @@ const CurvedTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditing }
                 <div className="flex justify-between items-start mt-8 page-break-inside-avoid">
                     <div className="w-1/2 pr-12">
                         <p className="text-sm font-black text-slate-800 mb-6">Thank you for business with us.</p>
+                        {data.paymentInstructions && (
+                            <div className="mb-4">
+                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-1" style={{ color: primaryColor }}>Payment Instructions:</h4>
+                                <p className="text-xs text-slate-500 leading-relaxed whitespace-pre-wrap font-medium">{data.paymentInstructions}</p>
+                            </div>
+                        )}
                         <h4 className="text-[10px] font-black uppercase tracking-widest mb-1" style={{ color: primaryColor }}>Terms & Conditions:</h4>
-                        <p className="text-xs text-slate-500 leading-relaxed whitespace-pre-wrap font-medium">{data.notes || 'Payment is due within 30 days.'}</p>
+                        <p className="text-xs text-slate-500 leading-relaxed whitespace-pre-wrap font-medium">{data.notes}</p>
 
                         <div className="mt-12 w-48 relative">
                             <div className="w-full border-b-2 border-slate-800 h-10 mb-2 relative">

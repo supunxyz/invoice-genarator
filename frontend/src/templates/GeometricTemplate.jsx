@@ -55,8 +55,8 @@ const GeometricTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditin
                 </div>
                 <div className="w-1/2 text-right">
                     <p className="text-xs text-slate-800 font-semibold mb-2"><span className="font-bold uppercase tracking-widest text-slate-400 mr-2">Invoice No:</span> {data.invoiceNumber}</p>
-                    <p className="text-xs text-slate-800 font-semibold mb-2"><span className="font-bold uppercase tracking-widest text-slate-400 mr-2">Invoice Date:</span> {new Date(data.dateIssued).toLocaleDateString()}</p>
-                    {data.dueDate && <p className="text-xs text-slate-800 font-semibold"><span className="font-bold uppercase tracking-widest text-slate-400 mr-2">Due Date:</span> {new Date(data.dueDate).toLocaleDateString()}</p>}
+                    <p className="text-xs text-slate-800 font-semibold mb-2"><span className="font-bold uppercase tracking-widest text-slate-400 mr-2">Invoice Date:</span> {data.dateIssued}</p>
+                    {data.dueDate && <p className="text-xs text-slate-800 font-semibold"><span className="font-bold uppercase tracking-widest text-slate-400 mr-2">Due Date:</span> {data.dueDate}</p>}
                 </div>
             </div>
 
@@ -68,15 +68,19 @@ const GeometricTemplate = ({ data, handleLogoUpload, calculateSubtotal, isEditin
                 <div className="w-[250px] pr-8 pt-6 pb-12 flex flex-col">
                     <div className="mb-10 pl-6">
                         <h4 className="text-xs font-black uppercase tracking-widest text-slate-800 mb-3 block border-b-2 border-slate-300 pb-1 w-max">Payment Method</h4>
-                        <div className="text-xs text-slate-600 font-medium space-y-2">
-                            <p>Bank Account</p>
-                            <p>Paypal</p>
-                            <p>Master Card</p>
-                        </div>
+                        {data.paymentInstructions ? (
+                            <p className="text-xs text-slate-600 font-medium whitespace-pre-wrap">{data.paymentInstructions}</p>
+                        ) : (
+                            <div className="text-xs text-slate-600 font-medium space-y-2">
+                                <p>Bank Account</p>
+                                <p>Paypal</p>
+                                <p>Master Card</p>
+                            </div>
+                        )}
                     </div>
                     <div className="pl-6">
                         <h4 className="text-xs font-black uppercase tracking-widest text-slate-800 mb-3 block border-b-2 border-slate-300 pb-1 w-max">Terms & Conditions:</h4>
-                        <p className="text-xs text-slate-500 leading-relaxed whitespace-pre-wrap">{data.notes || 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet.'}</p>
+                        <p className="text-xs text-slate-500 leading-relaxed whitespace-pre-wrap">{data.notes}</p>
                     </div>
                 </div>
 

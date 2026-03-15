@@ -80,7 +80,7 @@ const Sidebar = ({ data, setData, selectedTemplate, setSelectedTemplate, templat
                                 </div>
                                 <div>
                                     <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Due Date</label>
-                                    <input type="date" value={data.dueDate} onChange={(e) => updateData('dueDate', e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-slate-50" />
+                                    <input type="text" value={data.dueDate} onChange={(e) => updateData('dueDate', e.target.value)} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-slate-50" />
                                 </div>
                             </div>
                         </div>
@@ -140,6 +140,10 @@ const Sidebar = ({ data, setData, selectedTemplate, setSelectedTemplate, templat
                         {/* Footer Notes */}
                         <div className="space-y-4 pb-8">
                             <h3 className="text-sm font-black uppercase text-slate-800 flex items-center gap-2 border-b pb-2"><FileText size={16} /> Footer Notes</h3>
+                            <div>
+                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Payment Instructions</label>
+                                <textarea value={data.paymentInstructions} onChange={(e) => updateData('paymentInstructions', e.target.value)} rows={3} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-slate-50 resize-none" placeholder="Bank details, UPI, etc." />
+                            </div>
                             <div>
                                 <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Notes / Terms</label>
                                 <textarea value={data.notes} onChange={(e) => updateData('notes', e.target.value)} rows={3} className="w-full text-sm p-2 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all bg-slate-50 resize-none" />

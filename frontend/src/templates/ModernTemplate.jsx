@@ -78,12 +78,12 @@ const ModernTemplate = ({ data, setData, handleLogoUpload, calculateSubtotal, is
                         </div>
                         <div className="flex justify-between md:justify-end md:gap-8 w-full">
                             <span className="text-sm font-bold text-slate-400 uppercase tracking-widest">Date Issued</span>
-                            <span className="text-sm font-semibold text-slate-800 text-right min-w-[120px]">{new Date(data.dateIssued).toLocaleDateString()}</span>
+                            <span className="text-sm font-semibold text-slate-800 text-right min-w-[120px]">{data.dateIssued}</span>
                         </div>
                         {data.dueDate && (
                             <div className="flex justify-between md:justify-end md:gap-8 w-full">
                                 <span className="text-sm font-bold text-slate-400 uppercase tracking-widest">Due Date</span>
-                                <span className="text-sm font-semibold text-slate-800 text-right min-w-[120px]">{new Date(data.dueDate).toLocaleDateString()}</span>
+                                <span className="text-sm font-semibold text-slate-800 text-right min-w-[120px]">{data.dueDate}</span>
                             </div>
                         )}
                         {data.projectDescription && (
@@ -128,7 +128,18 @@ const ModernTemplate = ({ data, setData, handleLogoUpload, calculateSubtotal, is
                 {/* Footer Totals & Summary */}
                 <div className="flex flex-col md:flex-row justify-between gap-12 pt-8 border-t border-slate-100 mt-auto page-break-inside-avoid">
                     <div className="flex-1">
-                        <p className="text-lg text-slate-700 whitespace-pre-wrap">{data.notes}</p>
+                        {data.paymentInstructions && (
+                            <div className="mb-6">
+                                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2" style={{ color: data.themeColor }}>Payment Instructions</h4>
+                                <p className="text-sm text-slate-700 whitespace-pre-wrap">{data.paymentInstructions}</p>
+                            </div>
+                        )}
+                        {data.notes && (
+                            <div className="mb-6">
+                                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-2" style={{ color: data.themeColor }}>Notes / Terms</h4>
+                                <p className="text-sm text-slate-700 whitespace-pre-wrap">{data.notes}</p>
+                            </div>
+                        )}
 
                         {/* Signature Section */}
                         <div className="w-48 border-t-2 pt-2 mt-16 print:mt-12" style={{ borderTopColor: data.themeColor }}>
